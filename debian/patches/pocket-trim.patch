@@ -1,0 +1,39 @@
+Description: Trim features that don't fit on PocketCHIP
+ pcmanfm (1.2.3-1.1.ntc) unstable; urgency=medium
+ .
+   * Trim features that don't fit on PocketCHIP
+Author: Ben Young <software@nextthing.co>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- pcmanfm-1.2.3.orig/src/main-win-ui.c
++++ pcmanfm-1.2.3/src/main-win-ui.c
+@@ -211,7 +211,6 @@ static GtkActionEntry main_win_actions[]
+         {"FileProp", GTK_STOCK_PROPERTIES, N_("Propertie_s"), "<Alt>Return", NULL, G_CALLBACK(bounce_action)},
+         {"SelAll", GTK_STOCK_SELECT_ALL, NULL, "<Ctrl>A", NULL, G_CALLBACK(bounce_action)},
+         {"InvSel", NULL, N_("_Invert Selection"), "<Ctrl>I", NULL, G_CALLBACK(bounce_action)},
+-        {"Pref", GTK_STOCK_PREFERENCES, N_("Prefere_nces"), NULL, NULL, G_CALLBACK(on_preference)},
+     {"ViewMenu", NULL, N_("_View"), NULL, NULL, NULL},
+         {"Reload", GTK_STOCK_REFRESH, N_("_Reload Folder"), "F5", N_("Reload current folder"), G_CALLBACK(on_reload)},
+         {"Toolbar", NULL, N_("Tool_bar"), NULL, NULL, NULL},
+@@ -247,9 +246,6 @@ static GtkActionEntry main_win_actions[]
+         {"AddBookmark", GTK_STOCK_ADD, N_("_Add to Bookmarks..."), "<Ctrl>D", N_("Add current folder to bookmarks list"), G_CALLBACK(on_add_bookmark)},
+     {"ToolMenu", NULL, N_("Too_ls"), NULL, NULL, NULL},
+         {"Term", "utilities-terminal", N_("Open Current Folder in _Terminal"), "F4", NULL, G_CALLBACK(on_open_in_terminal)},
+-#if FM_CHECK_VERSION(1, 0, 2)
+-        {"Search", GTK_STOCK_FIND, N_("Fin_d Files..."), "<Ctrl><Shift>F", N_("Open search dialog"), G_CALLBACK(on_search)},
+-#endif
+ #if FM_CHECK_VERSION(1, 2, 0)
+         {"Launch", GTK_STOCK_EXECUTE, N_("_Run a Command in Current Folder..."), NULL, NULL, G_CALLBACK(on_launch)},
+ #endif
